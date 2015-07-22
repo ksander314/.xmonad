@@ -10,8 +10,9 @@ import XMonad.Hooks.DynamicLog ( dynamicLogWithPP
                                , xmobarColor
                                , xmobarPP
                                )
-import XMonad.Hooks.ManageDocks ( avoidStruts, ToggleStruts(ToggleStruts) )
-import XMonad.Layout.NoBorders ( smartBorders )
+import XMonad.Hooks.ManageDocks ( avoidStruts, AvoidStruts, ToggleStruts(ToggleStruts) )
+import XMonad.Layout.LayoutModifier ( ModifiedLayout )
+import XMonad.Layout.NoBorders ( SmartBorder, smartBorders )
 import XMonad.Util.Replace ( replace )
 import XMonad.Util.Run ( spawnPipe )
 
@@ -32,6 +33,16 @@ main = do
        , workspaces = myWorkSpaces
        , manageHook = myManageHook
        }
+myLayout :: Choose
+            (XMonad.Layout.LayoutModifier.ModifiedLayout
+             XMonad.Hooks.ManageDocks.AvoidStruts
+             (XMonad.Layout.LayoutModifier.ModifiedLayout
+              XMonad.Layout.NoBorders.SmartBorder Tall))
+            (Choose
+             (XMonad.Layout.LayoutModifier.ModifiedLayout
+              XMonad.Layout.NoBorders.SmartBorder Full)
+             (Mirror Tall))
+            Window
 myLayout = avoidStruts (smartBorders $ Tall 1 (3/100) (1/2)) |||
            smartBorders Full |||
            Mirror (Tall 1 (3/100) (1/2))
