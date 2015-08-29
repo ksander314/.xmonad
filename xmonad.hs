@@ -51,7 +51,7 @@ myKeys (XConfig {XMonad.modMask = modm}) = M.fromList
        [ ((modm, xK_p), spawn "dmenu_run")
        , ((modm, xK_b), sendMessage ToggleStruts)
        , ((modm .|. shiftMask, xK_l), spawn "slock")
-       , ((modm .|. shiftMask, xK_p), spawn "poweroff")
+       , ((modm .|. shiftMask, xK_p), spawn "qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout 1 2 3")
        , ((modm .|. controlMask, xK_e), emacsStart)
        , ((modm .|. controlMask, xK_f), firefoxStart)
        , ((modm .|. controlMask, xK_s), smplayerStart)
