@@ -50,7 +50,7 @@ myKeys :: (XConfig Layout -> M.Map (ButtonMask, KeySym) (X ()))
 myKeys (XConfig {XMonad.modMask = modm}) = M.fromList
        [ ((modm, xK_p), spawn "dmenu_run")
        , ((modm, xK_b), sendMessage ToggleStruts)
-       , ((modm .|. shiftMask, xK_l), spawn "slock")
+       , ((modm .|. shiftMask, xK_l), spawn "qdbus org.kde.screensaver /ScreenSaver org.freedesktop.ScreenSaver.Lock")
        , ((modm .|. shiftMask, xK_p), spawn "qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout 1 2 3")
        , ((modm .|. controlMask, xK_e), emacsStart)
        , ((modm .|. controlMask, xK_f), firefoxStart)
