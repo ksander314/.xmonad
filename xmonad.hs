@@ -29,7 +29,7 @@ main = do
          { ppOutput = hPutStrLn xmproc
          , ppTitle = xmobarColor "green" "" . shorten 50
          }
-       , terminal = "urxvt"
+       , terminal = "urxvt256c-ml"
        , workspaces = myWorkSpaces
        , manageHook = myManageHook
        }
